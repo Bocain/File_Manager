@@ -100,4 +100,10 @@ def openLink(zakladka):
     except:
         subprocess.call([r'C:\Program Files\Mozilla Firefox\Firefox.exe', '-new-tab', str(sciezka)])
 
-    
+def drzewko(): 
+    """zwraca listê dysków. póŸniej to wykorzystam."""
+    dyski = []
+    for x in range(65, 90):
+        if os.path.exists(chr(x) + ':\\'):
+            dyski.append(chr(x))
+    return dyski    
