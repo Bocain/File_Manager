@@ -1,2 +1,6 @@
 zegarek cyfrowy
+<<<<<<< HEAD
 tworzenie hase³ dla wyszykiwarki
+=======
+tworzenie has³a dla wyszukiwarki
+>>>>>>> button_sound
