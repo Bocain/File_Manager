@@ -29,10 +29,10 @@ class BottomButtonBar(object):
         self.BottomBar.put(buttonName, 100, 1)
 
     def buttonErrase(self,widget,event):
-        LeftColumnWithCatalogs.LeftColumnWithCatalogs()
         print RightColumnWithFiles.RightColumnWithFiles.SciezkaPliku
 
-    def buttonName(self,widget,event):
+    def buttonName(self,widget,event):       
+   
         with open('json_test.json') as json_file:
             caly_slownik = json.load(json_file)
             
@@ -43,7 +43,7 @@ class BottomButtonBar(object):
 
         with open('json_test.json', 'w') as outfile:
             json.dump(asd, outfile)
-
+        
 
         
 

@@ -8,7 +8,7 @@ import subprocess
 import LeftColumnWithCatalogs  
 import RightColumnWithFiles
 
-import HttpWindow   
+import HttpWindow
 
 def FilePos_Hist(widget):
     print 'Wyswietl historie zakladek'
@@ -33,14 +33,13 @@ def FilePos_Quit( widget):
     
     
 def ToolsPos_AddKata( widget):
-    print 'Dodaj katalog'
-    
     with open('json_test.json') as json_file:
         data = json.load(json_file)
     var1 = raw_input('Podaj tytu³ nowego katalogu : ')
     data[var1]={}
     with open('json_test.json', 'w') as outfile:
         json.dump(data, outfile)
+
 
 def ToolsPos_AddLink( widget):
     print 'Dodaj odnosnik'

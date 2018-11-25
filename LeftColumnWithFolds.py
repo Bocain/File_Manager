@@ -17,7 +17,7 @@ class LeftColumnWithFolds():
         """tworzenie okna zak³adek"""   
         self.subtabs_tree = gtk.TreeView()
         
-        self.subtabs_tree.set_model(LeftColumnWithCatalogs.refreshWindowTabs())
+        self.subtabs_tree.set_model(LeftColumnWithCatalogs.LeftColumnWithCatalogs.var_lista)
         
         subtabs_column = gtk.TreeViewColumn("Tematyczne linki do wybranej zakladki", gtk.CellRendererText(), text=0)
         self.subtabs_tree.append_column(subtabs_column)
@@ -33,6 +33,7 @@ class LeftColumnWithFolds():
         model = widget.get_model()
         text = model[row][0]
         MemberFunctions.openLink(str(text))
+
 
 
 
