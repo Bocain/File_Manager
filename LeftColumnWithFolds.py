@@ -15,25 +15,24 @@ class LeftColumnWithFolds():
     def __init__(self):
 
         """tworzenie okna zak³adek"""   
-        subtabs_tree = gtk.TreeView()
-        subtabs_tree.set_model(LeftColumnWithCatalogs.LeftColumnWithCatalogs.var_lista)
+        self.subtabs_tree = gtk.TreeView()
+        
+        self.subtabs_tree.set_model(LeftColumnWithCatalogs.refreshWindowTabs())
+        
         subtabs_column = gtk.TreeViewColumn("Tematyczne linki do wybranej zakladki", gtk.CellRendererText(), text=0)
-        subtabs_tree.append_column(subtabs_column)
+        self.subtabs_tree.append_column(subtabs_column)
 
         """funkcyjnoœæ okienka po podwójnym klikniêciu"""
-        subtabs_tree.connect("row-activated", self.subtab_activated)
+        self.subtabs_tree.connect("row-activated", self.subtab_activated)
 
         """umieszczenie okna zak³adek w przewijanym okienku"""
         self.subtabs_tree_sw = gtk.ScrolledWindow()
-        self.subtabs_tree_sw.add(subtabs_tree)
+        self.subtabs_tree_sw.add(self.subtabs_tree)
 
     def subtab_activated(self, widget, row, col):
         model = widget.get_model()
         text = model[row][0]
         MemberFunctions.openLink(str(text))
-
-    def test_update_window(self, nothing):
-        subtabs_tree.set_model(LeftColumnWithCatalogs.LeftColumnWithCatalogs.var_lista)
 
 
 

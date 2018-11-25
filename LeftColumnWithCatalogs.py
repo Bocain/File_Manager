@@ -10,6 +10,9 @@ import BottomButtonBar
 
 FolderIcon, FileIcon = graphics.FolderIcon, graphics.FileIcon
 
+def refreshWindowTabs():
+    return LeftColumnWithCatalogs.var_lista
+
 class LeftColumnWithCatalogs(object):
 
     var_lista = gtk.ListStore(str)
