@@ -16,3 +16,4 @@
 >Opracuj usuñ pozycje, zmieñ nazwe
 
 >£adny wydruk z json. next_step: eksport do txt z otwarciem
+>
