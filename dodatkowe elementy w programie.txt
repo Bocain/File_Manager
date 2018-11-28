@@ -1,3 +1,7 @@
 zegarek cyfrowy
 tworzenie has³a dla wyszukiwarki
 mo¿liwoœæ zmiany kolorów
+okno katalogów z mo¿liwoœci¹ tworzenia nowych list np. katalogi, zakupy, filmy
+w miejscu okna z katalogami miejsce na notatki
+
+
