@@ -4,11 +4,7 @@
 import pygtk
 import gtk
 import json
-
-##Poprawki:
-##    - po doddaniu zamknij okno
-##    - po anuluj zamknij okno
-    
+   
 
 class HttpWindow(gtk.Window):
     def __init__(self):
