@@ -29,26 +29,21 @@ class BottomButtonBar(object):
         self.BottomBar.put(buttonName, 100, 1)
 
     def buttonErrase(self,widget,event):
-        LeftColumnWithCatalogs.LeftColumnWithCatalogs()
         print RightColumnWithFiles.RightColumnWithFiles.SciezkaPliku
 
-    def buttonName(self,widget,event):
-        RightColumnWithFiles.RightColumnWithFiles().test_katalogow("nothing")
-
+    def buttonName(self,widget,event):       
+   
+        with open('json_test.json') as json_file:
+            caly_slownik = json.load(json_file)
+            
+        nowaNazwa = raw_input('Podaj nowa nazwe : ')
         
-##        LeftColumnWithFolds.LeftColumnWithFolds().test_update_window("nothing")
-        
-##        with open('json_test.json') as json_file:
-##            caly_slownik = json.load(json_file)
-##            
-##        nowaNazwa = raw_input('Podaj nowa nazwe : ')
-##        
-##        asd = caly_slownik
-##        asd[nowaNazwa]=asd.pop(LeftColumnWithCatalogs.LeftColumnWithCatalogs.katalogZmiana)
-##
-##        with open('json_test.json', 'w') as outfile:
-##            json.dump(asd, outfile)
+        asd = caly_slownik
+        asd[nowaNazwa]=asd.pop(LeftColumnWithCatalogs.LeftColumnWithCatalogs.katalogZmiana)
 
+        with open('json_test.json', 'w') as outfile:
+            json.dump(asd, outfile)
+        
 
         
 

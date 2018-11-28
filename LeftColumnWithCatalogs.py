@@ -16,7 +16,7 @@ class LeftColumnWithCatalogs(object):
     katalogBaza = ''
     katalogZmiana = ''
     
-    def __init__(self, dname = None, path_to_file = None):    
+    def __init__(self, dname = None, path_to_file = None):
         
         """tworzenie listy katalogów"""
         self.tabs_store = gtk.ListStore(str)
@@ -25,10 +25,8 @@ class LeftColumnWithCatalogs(object):
         klucze = caly_slownik.keys()
         for tab in klucze:
             self.tabs_store.append([str(tab)])
-
-        print "poszla kolumna"
         
-        self.tabs_tree = gtk.TreeView()
+        self.tabs_tree = gtk.TreeView()        
         self.tabs_tree.set_model(self.tabs_store)
             
         self.tabs_column = gtk.TreeViewColumn("K a t a l o g i", gtk.CellRendererText(), text=0)
@@ -45,8 +43,10 @@ class LeftColumnWithCatalogs(object):
         self.tabs_tree_sw = gtk.ScrolledWindow()
         self.tabs_tree_sw.add(self.tabs_tree)
 
+        
        
     def tab_activated(self, widget, row, col):
+
         LeftColumnWithCatalogs.var_lista.clear()
         model = widget.get_model()
         text = model[row][0]
