@@ -9,6 +9,7 @@ import LeftColumnWithCatalogs
 import RightColumnWithFiles
 
 import HttpWindow
+import LinkFileWindow
 
 def FilePos_Hist(widget):
     print 'Wyswietl historie zakladek'
@@ -30,6 +31,7 @@ def FilePos_Quit( widget):
     os.remove("LeftColumnWithFolds.pyc")
     os.remove("RightColumnWithFiles.pyc")
     os.remove("HttpWindow.pyc")
+    os.remove("LinkFileWindow.pyc")
     
     
 def ToolsPos_AddKata( widget):
@@ -43,14 +45,16 @@ def ToolsPos_AddKata( widget):
 
 def ToolsPos_AddLink( widget):
     print 'Dodaj odnosnik'
+    LinkFileWindow.odpal()
     
-    with open('json_test.json') as json_file:
-        data = json.load(json_file)
-    var3 = raw_input('Podaj tytu³ nowej zakladki : ')
-    data[str(LeftColumnWithCatalogs.LeftColumnWithCatalogs.katalogBaza)][var3]= str(RightColumnWithFiles.RightColumnWithFiles.SciezkaPliku) 
-
-    with open('json_test.json', 'w') as outfile:
-        json.dump(data, outfile)
+    
+##    with open('json_test.json') as json_file:
+##        data = json.load(json_file)
+##    var3 = raw_input('Podaj tytu³ nowej zakladki : ')
+##    data[str(LeftColumnWithCatalogs.LeftColumnWithCatalogs.katalogBaza)][var3]= str(RightColumnWithFiles.RightColumnWithFiles.SciezkaPliku) 
+##
+##    with open('json_test.json', 'w') as outfile:
+##        json.dump(data, outfile)
 
 def ToolsPos_AddHttp( widget):
     print "strona internetowa"
