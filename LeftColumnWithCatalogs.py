@@ -42,8 +42,11 @@ class LeftColumnWithCatalogs(object):
         """umieszczenie okna katalogów w przewijanym okienku"""
         self.tabs_tree_sw = gtk.ScrolledWindow()
         self.tabs_tree_sw.add(self.tabs_tree)
+
+        
        
     def tab_activated(self, widget, row, col):
+
         LeftColumnWithCatalogs.var_lista.clear()
         model = widget.get_model()
         text = model[row][0]
