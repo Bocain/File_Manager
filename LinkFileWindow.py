@@ -6,13 +6,13 @@ import gtk
 import json
    
 
-class HttpWindow(gtk.Window):
+class LinkFileWindow(gtk.Window):
     def __init__(self):
-        super(HttpWindow, self).__init__()
+        super(LinkFileWindow, self).__init__()
 
         self.catalogComboBox = ''
         
-        self.set_title("Dodaj do katalogu nowa zakladke z linkiem www.")
+        self.set_title("Dodaj do katalogu nowa zakladke z plikiem.")
         self.set_default_size(350, 200)
         self.set_position(gtk.WIN_POS_CENTER)
 
@@ -34,8 +34,11 @@ class HttpWindow(gtk.Window):
         lb_1 = gtk.Label('Wpisz nazwe nowej zakladki :')
         self.entry_1 = gtk.Entry()
         
-        lb_2 = gtk.Label('Wklej lub wpisz adres strony internetowej :')
+        lb_2 = gtk.Label('Wklej lub wpisz sciezke pliku :')
         self.entry_2 = gtk.Entry()
+
+        btn_file = gtk.Button('Znajdz plik')
+        btn_file.connect('clicked', self.button_find_file)
         
         btn_add = gtk.Button('Dodaj')
         btn_add.connect('clicked', self.button_add)
@@ -56,6 +59,7 @@ class HttpWindow(gtk.Window):
         screen.put(lb_2, 10, 120)
         screen.put(self.entry_2, 10, 140)
         
+        screen.put(btn_file, 220, 140)
         screen.put(btn_add, 10, 170)
         screen.put(btn_errase, 55, 170)
         
@@ -86,9 +90,12 @@ class HttpWindow(gtk.Window):
     def button_errase(self, widgets):
         print('Resetuje ustawienia')
 
+    def button_find_file(self, widgets):
+        print('Otwiera okno z plikami')
+
 
 def odpal():
-    HttpWindow()
+    LinkFileWindow()
     gtk.main()
 
 #odpal()
