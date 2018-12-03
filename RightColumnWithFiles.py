@@ -12,8 +12,8 @@ class RightColumnWithFiles(object):
 
     SciezkaPliku = ''
     
-    def __init__(self, dname = None, path_to_file = None):
-        
+    def __init__(self, dname = None):
+
         """nazwy kolumn"""
         column_names = ['Name', 'Size', 'Mode', 'Last Changed']
 
@@ -45,7 +45,7 @@ class RightColumnWithFiles(object):
             tvcolumn[n].set_cell_data_func(cell, cell_data_funcs[n])
             treeview.append_column(tvcolumn[n])
 
-        """funkcyjnoœæ okienka po podwójnym klikniêciu. zahaszowane linie s¹ jeszcze do dopracowania"""
+        """funkcyjnoœæ okienka po podwójnym klikniêciu"""
         treeview.connect("row-activated", self.open_file)
         treeview.connect("row-activated", self.on_activated)
         treeview.set_model(listmodel)
@@ -65,16 +65,14 @@ class RightColumnWithFiles(object):
             """zwraca bie¿¹c¹ œcie¿ke, chyba do folderu z plikiem"""
             self.dirname = os.path.abspath(dname)
 
-        """wyœwitla œcie¿kê w nag³ówku okienka"""
-        #self.set_title(self.dirname)
-
-        """exploring the path. zahaszowane to eksperymenty"""
+        """exploring the path"""
         files = [f for f in os.listdir(self.dirname) if f[0] <> '.']
-        #files.sort()
         files = ['..'] + files
+        
         listmodel = gtk.ListStore(object)
         for f in files:
             listmodel.append([f])
+
         return listmodel
 
     def open_file(self, treeview, path, column):
@@ -85,11 +83,17 @@ class RightColumnWithFiles(object):
 
         """nie mam pojêcia co to robi"""
         iter = model.get_iter(path)
+
+        """os.path.join zwraca œcie¿kê pliku. z³o¿ona metoda, sprawdza czy œcie¿ka jest absolutna"""
         filename = os.path.join(self.dirname, model.get_value(iter, 0))
-        self.path_to_file = filename
+        
         RightColumnWithFiles.SciezkaPliku = filename
+        
+        """os.stat zwraca obiekt informacji o pliku"""
         filestat = os.stat(filename)
-        if stat.S_ISDIR(filestat.st_mode): 
+
+        """stat.S_ISDIR(filestat.st_mode) zwraca True albo False"""
+        if stat.S_ISDIR(filestat.st_mode):
             new_model = self.make_list(filename) 
             treeview.set_model(new_model) 
         return
@@ -142,5 +146,6 @@ class RightColumnWithFiles(object):
         model = widget.get_model()
         text = model[row][0]
         print text
+
 
 
