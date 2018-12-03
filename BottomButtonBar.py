@@ -29,8 +29,8 @@ class BottomButtonBar(object):
         self.BottomBar.put(buttonName, 100, 1)
 
     def buttonErrase(self,widget,event):
-        
-        print RightColumnWithFiles.RightColumnWithFiles.SciezkaPliku
+        LeftColumnWithCatalogs.LeftColumnWithCatalogs()
+##        print RightColumnWithFiles.RightColumnWithFiles.SciezkaPliku
 
     def buttonName(self,widget,event):       
         with open('json_test.json') as json_file:
