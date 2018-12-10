@@ -5,7 +5,6 @@ import pygtk
 pygtk.require('2.0')
 import gtk
 import json
-import RightColumnWithFiles
 import LeftColumnWithCatalogs
 import LeftColumnWithFolds
 
@@ -29,7 +28,7 @@ class BottomButtonBar(object):
         self.BottomBar.put(buttonName, 100, 1)
 
     def buttonErrase(self,widget,event):
-        print RightColumnWithFiles.RightColumnWithFiles.SciezkaPliku
+        print "Przycisk do zagospodarowania now¹ fukcj¹"
 
     def buttonName(self,widget,event):       
    

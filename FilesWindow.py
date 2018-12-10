@@ -8,7 +8,7 @@ import graphics
 
 FolderIcon, FileIcon = graphics.FolderIcon, graphics.FileIcon
 
-class RightColumnWithFiles(object):
+class FilesWindow(object):
 
     SciezkaPliku = ''
     
@@ -87,7 +87,7 @@ class RightColumnWithFiles(object):
         iter = model.get_iter(path)
         filename = os.path.join(self.dirname, model.get_value(iter, 0))
         self.path_to_file = filename
-        RightColumnWithFiles.SciezkaPliku = filename
+        FilesWindow.SciezkaPliku = filename
         filestat = os.stat(filename)
         if stat.S_ISDIR(filestat.st_mode): 
             new_model = self.make_list(filename) 
@@ -142,5 +142,3 @@ class RightColumnWithFiles(object):
         model = widget.get_model()
         text = model[row][0]
         print text
-
-

@@ -68,7 +68,3 @@ class LeftColumnWithCatalogs(object):
             text = "brak iter ???"
 
         print str(text)
-
-
-
-

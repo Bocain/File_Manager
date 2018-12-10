@@ -6,7 +6,6 @@ import gtk
 import json
 import subprocess
 import LeftColumnWithCatalogs  
-import RightColumnWithFiles
 
 import HttpWindow
 import LinkFileWindow
@@ -29,9 +28,9 @@ def FilePos_Quit( widget):
     os.remove("graphics.pyc")
     os.remove("LeftColumnWithCatalogs.pyc")
     os.remove("LeftColumnWithFolds.pyc")
-    os.remove("RightColumnWithFiles.pyc")
     os.remove("HttpWindow.pyc")
     os.remove("LinkFileWindow.pyc")
+    os.remove("RightColumnWithRemarks.pyc")
     
     
 def ToolsPos_AddKata( widget):
