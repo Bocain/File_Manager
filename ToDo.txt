@@ -13,9 +13,11 @@
 >Okno z katalogami i zak³adkami:
 	- dodaj zabezpieczenie przed otwarciem b³êdnej œcie¿ki
 
->Opracuj usuñ pozycje, zmieñ nazwe
+>Opracuj usuñ pozycje, zmieñ nazwe. Popup window z potwierdzeniem.
 
 >£adny wydruk z json. next_step: eksport do txt z otwarciem
+
+>Usuñ zak³adke konfiguracja razem z list¹ i kodem.
 =======================================================================================
 pygtk2tut.pdf -117s./156/???
 gtk.textview
