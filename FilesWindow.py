@@ -5,17 +5,26 @@ import os, stat, time
 import pygtk
 import gtk
 import graphics
+import ChosenFile
 
 FolderIcon, FileIcon = graphics.FolderIcon, graphics.FileIcon
 
-class FilesWindow(object):
+class FilesWindow(gtk.Window):
 
     SciezkaPliku = ''
     
     def __init__(self, dname = None, path_to_file = None):
+
         
+        
+        super(FilesWindow, self).__init__()
+
+        self.set_default_size(400, 600)
+        self.set_position(gtk.WIN_POS_CENTER)       
         """nazwy kolumn"""
         column_names = ['Name', 'Size', 'Mode', 'Last Changed']
+
+        self.connect("destroy", gtk.main_quit)
 
         """tworzy okno plików"""
         treeview = gtk.TreeView()
@@ -47,13 +56,14 @@ class FilesWindow(object):
 
         """funkcyjnoœæ okienka po podwójnym klikniêciu. zahaszowane linie s¹ jeszcze do dopracowania"""
         treeview.connect("row-activated", self.open_file)
-        treeview.connect("row-activated", self.on_activated)
         treeview.set_model(listmodel)
         
         """umieszczenie okna plików w przewijanym okienku"""
-        self.sw = gtk.ScrolledWindow()
-        self.sw.add(treeview)
-
+        sw=gtk.ScrolledWindow()
+        sw.add(treeview)
+        
+        self.add(sw)
+        self.show_all()
         return       
  
     def make_list(self, dname=None):
@@ -78,7 +88,6 @@ class FilesWindow(object):
         return listmodel
 
     def open_file(self, treeview, path, column):
-        """nie wiem nic. zahaszowane to eksperymenty. sk¹d path?"""
 
         """zwraca powi¹zany model, czyli treeview od gtk.TreeView"""
         model = treeview.get_model()
@@ -88,10 +97,16 @@ class FilesWindow(object):
         filename = os.path.join(self.dirname, model.get_value(iter, 0))
         self.path_to_file = filename
         FilesWindow.SciezkaPliku = filename
+        
+        self.set_title(filename)
         filestat = os.stat(filename)
         if stat.S_ISDIR(filestat.st_mode): 
             new_model = self.make_list(filename) 
-            treeview.set_model(new_model) 
+            treeview.set_model(new_model)
+
+        if filestat.st_size > 0 :
+            potwierdz_plik = ChosenFile.ChosenFile(filename)
+        
         return
 
     def file_pixbuf(self, column, cell, model, iter):
@@ -138,7 +153,7 @@ class FilesWindow(object):
         """zamienia sekundy na standardowy format jako True. 'text' to specyfikacja, domyœlnie None. """
         cell.set_property('text', time.ctime(filestat.st_mtime))
 
-    def on_activated(self, widget, row, col):
-        model = widget.get_model()
-        text = model[row][0]
-        print text
+
+def odpal():
+    FilesWindow()
+    gtk.main()

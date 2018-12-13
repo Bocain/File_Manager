@@ -30,6 +30,8 @@ def FilePos_Quit( widget):
     os.remove("HttpWindow.pyc")
     os.remove("LinkFileWindow.pyc")
     os.remove("RightColumnWithRemarks.pyc")
+    os.remove("FilesWindow.pyc")
+    os.remove("ChosenFile.pyc")
     
     
 def ToolsPos_AddKata( widget):
