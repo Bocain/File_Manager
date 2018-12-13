@@ -17,14 +17,9 @@ class HttpWindow(gtk.Window):
         self.set_position(gtk.WIN_POS_CENTER)
 
         lb_katalog = gtk.Label('Wybierz z rozwijanej listy katalog, w ktorym dodasz nowa zakladke.')
-##        self.entry_katalog = gtk.Entry()
-
         
         cb = gtk.combo_box_new_text()
         cb.connect('changed', self.comboOption)
-##        cb.append_text('Create catalogue')
-##        cb.append_text('Delete catalogue')
-##        cb.append_text('Add commment to catalogue')
         with open('json_test.json') as json_file:
             caly_slownik = json.load(json_file)
         klucze = caly_slownik.keys()
@@ -39,15 +34,10 @@ class HttpWindow(gtk.Window):
         
         btn_add = gtk.Button('Dodaj')
         btn_add.connect('clicked', self.button_add)
-
-        btn_errase = gtk.Button('Anuluj')
-        btn_errase.connect('clicked', self.button_errase)
         
-##        box_main = gtk.VBox()
         screen = gtk.Fixed()
 
         screen.put(lb_katalog, 10, 10)
-##        screen.put(self.entry_katalog, 10, 30)
         screen.put(cb, 10, 30)
                
         screen.put(lb_1, 10, 60)
@@ -57,15 +47,10 @@ class HttpWindow(gtk.Window):
         screen.put(self.entry_2, 10, 140)
         
         screen.put(btn_add, 10, 170)
-        screen.put(btn_errase, 55, 170)
-        
-        
-##        box_main.pack_start()
-##        box_main.pack_start()
-##        self.add(box_main)
 
         self.add(screen)
         self.show_all()
+        
         return
 
     def comboOption(self, widget):
@@ -82,13 +67,6 @@ class HttpWindow(gtk.Window):
             
         print "Doda³eœ now¹ zak³adkê"
 
-        
-    def button_errase(self, widgets):
-        print('Resetuje ustawienia')
-
-
 def odpal():
     HttpWindow()
     gtk.main()
-
-#odpal()

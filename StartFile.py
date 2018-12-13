@@ -8,7 +8,7 @@ import graphics
 import gc
 import TopBookmarksBar
 import BottomButtonBar
-import RightColumnWithFiles
+import RightColumnWithRemarks
 import LeftColumnWithCatalogs
 import LeftColumnWithFolds
 
@@ -24,7 +24,7 @@ class StartFile(gtk.Window):
 
         TopBar = TopBookmarksBar.TopBookmarksBar()
         BottomBar = BottomButtonBar.BottomButtonBar()
-        RightColumn = RightColumnWithFiles.RightColumnWithFiles()
+        RightColumn = RightColumnWithRemarks.RightColumnWithRemarks()
         LeftColumnCatalogs = LeftColumnWithCatalogs.LeftColumnWithCatalogs()
         LeftColumnFolds = LeftColumnWithFolds.LeftColumnWithFolds()
 

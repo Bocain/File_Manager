@@ -4,9 +4,14 @@
 import pygtk
 import gtk
 import json
+import FilesWindow
    
 
 class LinkFileWindow(gtk.Window):
+
+    wybrany_plik = 'Miejsce na sciezke pliku'
+    wybrany_katalog = ''
+    
     def __init__(self):
         super(LinkFileWindow, self).__init__()
 
@@ -17,14 +22,11 @@ class LinkFileWindow(gtk.Window):
         self.set_position(gtk.WIN_POS_CENTER)
 
         lb_katalog = gtk.Label('Wybierz z rozwijanej listy katalog, w ktorym dodasz nowa zakladke.')
-##        self.entry_katalog = gtk.Entry()
 
         
         cb = gtk.combo_box_new_text()
         cb.connect('changed', self.comboOption)
-##        cb.append_text('Create catalogue')
-##        cb.append_text('Delete catalogue')
-##        cb.append_text('Add commment to catalogue')
+
         with open('json_test.json') as json_file:
             caly_slownik = json.load(json_file)
         klucze = caly_slownik.keys()
@@ -36,21 +38,17 @@ class LinkFileWindow(gtk.Window):
         
         lb_2 = gtk.Label('Wklej lub wpisz sciezke pliku :')
         self.entry_2 = gtk.Entry()
+        self.entry_2.set_text(LinkFileWindow.wybrany_plik)
 
         btn_file = gtk.Button('Znajdz plik')
         btn_file.connect('clicked', self.button_find_file)
         
         btn_add = gtk.Button('Dodaj')
         btn_add.connect('clicked', self.button_add)
-
-        btn_errase = gtk.Button('Anuluj')
-        btn_errase.connect('clicked', self.button_errase)
         
-##        box_main = gtk.VBox()
         screen = gtk.Fixed()
 
         screen.put(lb_katalog, 10, 10)
-##        screen.put(self.entry_katalog, 10, 30)
         screen.put(cb, 10, 30)
                
         screen.put(lb_1, 10, 60)
@@ -61,12 +59,6 @@ class LinkFileWindow(gtk.Window):
         
         screen.put(btn_file, 220, 140)
         screen.put(btn_add, 10, 170)
-        screen.put(btn_errase, 55, 170)
-        
-        
-##        box_main.pack_start()
-##        box_main.pack_start()
-##        self.add(box_main)
 
         self.add(screen)
         self.show_all()
@@ -74,6 +66,8 @@ class LinkFileWindow(gtk.Window):
 
     def comboOption(self, widget):
         self.catalogComboBox = widget.get_active_text()
+        LinkFileWindow.wybrany_katalog = widget.get_active_text()
+        
 
     def button_add(self, widgets):
         with open('json_test.json') as json_file:
@@ -83,19 +77,12 @@ class LinkFileWindow(gtk.Window):
 
         with open('json_test.json', 'w') as outfile:
             json.dump(caly_slownik, outfile)
-            
-        print "Doda³eœ now¹ zak³adkê"
-
-        
-    def button_errase(self, widgets):
-        print('Resetuje ustawienia')
 
     def button_find_file(self, widgets):
+        FilesWindow.odpal()
         print('Otwiera okno z plikami')
 
 
 def odpal():
     LinkFileWindow()
     gtk.main()
-
-#odpal()

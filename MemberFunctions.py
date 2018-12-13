@@ -6,8 +6,6 @@ import gtk
 import json
 import subprocess
 import LeftColumnWithCatalogs  
-import RightColumnWithFiles
-
 import HttpWindow
 import LinkFileWindow
 
@@ -29,9 +27,11 @@ def FilePos_Quit( widget):
     os.remove("graphics.pyc")
     os.remove("LeftColumnWithCatalogs.pyc")
     os.remove("LeftColumnWithFolds.pyc")
-    os.remove("RightColumnWithFiles.pyc")
     os.remove("HttpWindow.pyc")
     os.remove("LinkFileWindow.pyc")
+    os.remove("RightColumnWithRemarks.pyc")
+    os.remove("FilesWindow.pyc")
+    os.remove("ChosenFile.pyc")
     
     
 def ToolsPos_AddKata( widget):
@@ -60,39 +60,11 @@ def ToolsPos_AddHttp( widget):
     print "strona internetowa"
     HttpWindow.odpal()
     
-    
 def ToolsPos_DelePosi( widget):
     print 'Usun pozycje'
 
-def ToolsPos_ChanName( widget):
-    print 'Zmien nazwe'
-
 def ToolsPos_Help( widget):
     print 'Wyswietl instrukcje obslugi'
-
-def ArrangementPos_Wide( widget):
-    print 'Zmien szerokosc lewej kolumny'
-
-def ArrangementPos_TallKata( widget):
-    print 'Zmien wysokosc okienka katalogow'
-
-def ArrangementPos_TallLink( widget):
-    print 'Zmien wysokosc okienka odnosnikow'
-
-def ArrangementPos_FontSizeKata( widget):
-    print 'Zmien rozmiar czcionki katalogow'
-
-def ArrangementPos_FontSizeLink( widget):
-    print 'Zmien rozmiar czcionki odnosnikow'
-
-def ArrangementPos_FontSizeFileTree( widget):
-    print 'Zmien rozmiar czcionki nazw plikow'
-
-def ArrangementPos_IkonChanKata( widget):
-    print 'Zmien ikonke katalogu'
-
-def ArrangementPos_IkonChanLink( widget):
-    print 'Zmien ikonke odnosnika'
 
 def openLink(zakladka):
     with open('json_test.json') as json_file:

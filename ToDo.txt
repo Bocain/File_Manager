@@ -1,19 +1,9 @@
->HttpWindow:
-	- po doddaniu zamknij okno
-	- po anuluj zamknij okno
-	- dekrementacja wywo³añ okna (inna funkcja ni¿ gtk.main_quit())
-
->Stwórz LinkFileWindow:
-	- eksportuj tam funkcjonalnoœæ MemberFunction.ToolsPos_AddLink
-	- eksportuj tam okno z katalogami
-	- dodaj wybór dysku
+>dodaj katalog, zmien nazwe, usun pozycje
 
 >Stwórz okno do notatek w miejscu okna z katalogami
 
->Okno z katalogami i zak³adkami:
-	- dodaj zabezpieczenie przed otwarciem b³êdnej œcie¿ki
-
->Opracuj usuñ pozycje, zmieñ nazwe
-
 >£adny wydruk z json. next_step: eksport do txt z otwarciem
->
+=======================================================================================
+pygtk2tut.pdf -117s./156/???
+gtk.textview
+moje dokumenty
