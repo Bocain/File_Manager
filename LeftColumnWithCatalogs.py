@@ -15,19 +15,20 @@ class LeftColumnWithCatalogs(object):
     var_lista = gtk.ListStore(str)
     katalogBaza = ''
     katalogZmiana = ''
+    katalogi_test_global = gtk.ListStore(str)
     
     def __init__(self, dname = None, path_to_file = None):
+        LeftColumnWithCatalogs.katalogi_test_global.clear()
         
         """tworzenie listy katalogów"""
-        self.tabs_store = gtk.ListStore(str)
         with open('json_test.json') as json_file:
             caly_slownik = json.load(json_file)
         klucze = caly_slownik.keys()
         for tab in klucze:
-            self.tabs_store.append([str(tab)])
+            LeftColumnWithCatalogs.katalogi_test_global.append([str(tab)])
         
         self.tabs_tree = gtk.TreeView()        
-        self.tabs_tree.set_model(self.tabs_store)
+        self.tabs_tree.set_model(LeftColumnWithCatalogs.katalogi_test_global)
             
         self.tabs_column = gtk.TreeViewColumn("K a t a l o g i", gtk.CellRendererText(), text=0)
         self.tabs_tree.append_column(self.tabs_column)

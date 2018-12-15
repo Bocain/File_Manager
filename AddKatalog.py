@@ -4,6 +4,7 @@
 import pygtk
 import gtk
 import json
+import LeftColumnWithCatalogs
 
 class AddKatalog(gtk.Window):
     def __init__(self):
@@ -46,3 +47,4 @@ class AddKatalog(gtk.Window):
             data[var]={}
             with open('json_test.json', 'w') as outfile:
                 json.dump(data, outfile)
+            LeftColumnWithCatalogs.LeftColumnWithCatalogs()
