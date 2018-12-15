@@ -9,6 +9,7 @@ import LeftColumnWithCatalogs
 import HttpWindow
 import LinkFileWindow
 import AddKatalog
+import ChangeName
 
 def FilePos_Hist(widget):
     print 'Wyswietl historie zakladek'
@@ -34,6 +35,7 @@ def FilePos_Quit( widget):
     os.remove("FilesWindow.pyc")
     os.remove("ChosenFile.pyc")
     os.remove("AddKatalog.pyc")
+    os.remove("ChangeName.pyc")
     
     
 def ToolsPos_AddKata( widget):
@@ -57,6 +59,9 @@ def ToolsPos_AddHttp( widget):
     
 def ToolsPos_DelePosi( widget):
     print 'Usun pozycje'
+
+def ToolsPos_ChangName( widget):
+    ChangeName.ChangeName()
 
 def ToolsPos_Help( widget):
     print 'Wyswietl instrukcje obslugi'

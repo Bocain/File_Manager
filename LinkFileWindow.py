@@ -73,7 +73,7 @@ class LinkFileWindow(gtk.Window):
         with open('json_test.json') as json_file:
             caly_slownik = json.load(json_file)
             
-        caly_slownik[str(self.catalogComboBox)][str(self.entry_1.get_text())]= str(self.entry_2.get_text()) 
+        caly_slownik[str(self.catalogComboBox)][str(self.entry_1.get_text())] = str(self.entry_2.get_text()) 
 
         with open('json_test.json', 'w') as outfile:
             json.dump(caly_slownik, outfile)
