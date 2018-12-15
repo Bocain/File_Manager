@@ -36,8 +36,8 @@ class ChangeName(gtk.Window):
         screen = gtk.Fixed()
 
         screen.put(cb, 10, 10)       
-        screen.put(self.entry, 10, 30)
-        screen.put(btn_yes, 10, 60)
+        screen.put(self.entry, 10, 40)
+        screen.put(btn_yes, 10, 70)
 
         self.add(screen)
         self.show_all()
@@ -50,11 +50,12 @@ class ChangeName(gtk.Window):
     def button_yes(self, widgets):
         with open('json_test.json') as json_file:
             data = json.load(json_file)
-            
-        klucze = data.keys()
 
-        data[str(self.entry.get_text())]= klucze[str(self.catalogComboBox)]
+        data[str(self.entry.get_text())] = data[str(self.catalogComboBox)]
+        
+        data.pop(str(self.catalogComboBox), None)
         
         with open('json_test.json', 'w') as outfile:
             json.dump(data, outfile)
+            
         LeftColumnWithCatalogs.LeftColumnWithCatalogs()
