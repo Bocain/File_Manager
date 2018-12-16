@@ -8,6 +8,9 @@ import subprocess
 import LeftColumnWithCatalogs  
 import HttpWindow
 import LinkFileWindow
+import AddKatalog
+import ChangeName
+import HelpWindow
 
 def FilePos_Hist(widget):
     print 'Wyswietl historie zakladek'
@@ -32,19 +35,16 @@ def FilePos_Quit( widget):
     os.remove("RightColumnWithRemarks.pyc")
     os.remove("FilesWindow.pyc")
     os.remove("ChosenFile.pyc")
+    os.remove("AddKatalog.pyc")
+    os.remove("ChangeName.pyc")
+    os.remove("HelpWindow.pyc")
     
     
 def ToolsPos_AddKata( widget):
-    with open('json_test.json') as json_file:
-        data = json.load(json_file)
-    var1 = raw_input('Podaj tytu³ nowego katalogu : ')
-    data[var1]={}
-    with open('json_test.json', 'w') as outfile:
-        json.dump(data, outfile)
+    AddKatalog.AddKatalog()
 
 
 def ToolsPos_AddLink( widget):
-    print 'Dodaj odnosnik'
     LinkFileWindow.odpal()
     
     
@@ -57,14 +57,16 @@ def ToolsPos_AddLink( widget):
 ##        json.dump(data, outfile)
 
 def ToolsPos_AddHttp( widget):
-    print "strona internetowa"
     HttpWindow.odpal()
     
 def ToolsPos_DelePosi( widget):
     print 'Usun pozycje'
 
+def ToolsPos_ChangName( widget):
+    ChangeName.ChangeName()
+
 def ToolsPos_Help( widget):
-    print 'Wyswietl instrukcje obslugi'
+    HelpWindow.HelpWindow()
 
 def openLink(zakladka):
     with open('json_test.json') as json_file:
