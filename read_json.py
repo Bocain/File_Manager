@@ -1,10 +1,11 @@
 import json
 import pprint
+import gtk
 
-with open('json_test.json') as slownik:
-    katalogi_zakladki = json.load(slownik)
-
-print json.dumps(katalogi_zakladki, indent=4, sort_keys=True)
+##with open('json_test.json') as slownik:
+##    katalogi_zakladki = json.load(slownik)
+##
+##print json.dumps(katalogi_zakladki, indent=4, sort_keys=True)
 
 ##pprint.pprint(katalogi_zakladki)
 
@@ -17,3 +18,27 @@ print json.dumps(katalogi_zakladki, indent=4, sort_keys=True)
 ##            print (" ")*depth + "%s %s" % (k, v)
 ##
 ##walk_dict(katalogi_zakladki)
+
+class OpenJason(gtk.Window):
+    def __init__(self):
+        super(OpenJason, self).__init__()
+            
+        self.connect("destroy", lambda w: gtk.main_quit())
+        self.set_default_size(300, 300)
+        self.set_position(gtk.WIN_POS_CENTER)
+        
+        with open('json_test.json') as slownik:
+            katalogi_zakladki = json.load(slownik)
+        text = json.dumps(katalogi_zakladki, indent=4, sort_keys=True)
+
+        label = gtk.Label()
+        label.set_text(text)
+        frame = gtk.Frame("Zawartosc katalogow")
+        frame.add(label)
+
+        self.add(frame)
+        self.show_all()
+        gtk.main()        
+        return
+
+OpenJason()
