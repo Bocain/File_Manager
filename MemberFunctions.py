@@ -9,6 +9,7 @@ import LeftColumnWithCatalogs
 import HttpWindow
 import LinkFileWindow
 import AddKatalog
+import HelpWindow
 
 def FilePos_Hist(widget):
     print 'Wyswietl historie zakladek'
@@ -34,6 +35,7 @@ def FilePos_Quit( widget):
     os.remove("FilesWindow.pyc")
     os.remove("ChosenFile.pyc")
     os.remove("AddKatalog.pyc")
+    os.remove("HelpWindow.pyc")
     
     
 def ToolsPos_AddKata( widget):
@@ -59,7 +61,7 @@ def ToolsPos_DelePosi( widget):
     print 'Usun pozycje'
 
 def ToolsPos_Help( widget):
-    print 'Wyswietl instrukcje obslugi'
+    HelpWindow.HelpWindow()
 
 def openLink(zakladka):
     with open('json_test.json') as json_file:
