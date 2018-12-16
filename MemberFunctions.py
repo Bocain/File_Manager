@@ -11,6 +11,7 @@ import LinkFileWindow
 import AddKatalog
 import ChangeName
 import HelpWindow
+import DeletePosition
 
 def FilePos_Hist(widget):
     print 'Wyswietl historie zakladek'
@@ -38,6 +39,7 @@ def FilePos_Quit( widget):
     os.remove("AddKatalog.pyc")
     os.remove("ChangeName.pyc")
     os.remove("HelpWindow.pyc")
+    os.remove("DeletePosition.pyc")
     
     
 def ToolsPos_AddKata( widget):
@@ -60,7 +62,7 @@ def ToolsPos_AddHttp( widget):
     HttpWindow.odpal()
     
 def ToolsPos_DelePosi( widget):
-    print 'Usun pozycje'
+    DeletePosition.DeletePosition()
 
 def ToolsPos_ChangName( widget):
     ChangeName.ChangeName()
