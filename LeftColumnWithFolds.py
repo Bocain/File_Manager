@@ -9,6 +9,7 @@ import subprocess
 import LeftColumnWithCatalogs
 import MemberFunctions
 import BottomButtonBar
+import DeletePosition
 
 class LeftColumnWithFolds():
 
@@ -25,6 +26,9 @@ class LeftColumnWithFolds():
         """funkcyjnoœæ okienka po podwójnym klikniêciu"""
         self.subtabs_tree.connect("row-activated", self.subtab_activated)
 
+        selection = self.subtabs_tree.get_selection()
+        selection.connect("changed", self.pozycjaKatalogu)
+
         """umieszczenie okna zak³adek w przewijanym okienku"""
         self.subtabs_tree_sw = gtk.ScrolledWindow()
         self.subtabs_tree_sw.add(self.subtabs_tree)
@@ -33,6 +37,10 @@ class LeftColumnWithFolds():
         model = widget.get_model()
         text = model[row][0]
         MemberFunctions.openLink(str(text))
+
+    def pozycjaKatalogu(self, selection):        
+        (model, iter) = selection.get_selected()
+        DeletePosition.DeletePosition.pozycja = str(model[iter][0])
 
 
 

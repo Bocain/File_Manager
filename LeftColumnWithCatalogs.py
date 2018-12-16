@@ -7,6 +7,7 @@ import gtk
 import graphics
 import json
 import BottomButtonBar
+import DeletePosition
 
 FolderIcon, FileIcon = graphics.FolderIcon, graphics.FileIcon
 
@@ -39,7 +40,7 @@ class LeftColumnWithCatalogs(object):
         """wybrany wiersz emituje sygnal"""
         self.selection = self.tabs_tree.get_selection()
         self.selection.connect("changed", self.pozycjaKatalogu)
-        
+                               
         """umieszczenie okna katalogów w przewijanym okienku"""
         self.tabs_tree_sw = gtk.ScrolledWindow()
         self.tabs_tree_sw.add(self.tabs_tree)
@@ -60,6 +61,7 @@ class LeftColumnWithCatalogs(object):
             
     def pozycjaKatalogu(self, selection):        
         (model, iter) = selection.get_selected()
+        DeletePosition.DeletePosition.pozycja = str(model[iter][0])
         LeftColumnWithCatalogs.katalogZmiana = str(model[iter][0])
         
         if iter is not None:
