@@ -1,4 +1,4 @@
->usun pozycje, iek
+>usun pozycje, iek, zmieñ nazwe zak³adki
 
 >Stwórz okno do notatek w miejscu okna z katalogami
 =======================================================================================

@@ -44,3 +44,14 @@ class DeletePosition(gtk.Window):
             with open('json_test.json', 'w') as outfile:
                 json.dump(caly_slownik, outfile)
             LeftColumnWithCatalogs.LeftColumnWithCatalogs()
+        else:
+            for i in klucze_katalogi:
+                for j in caly_slownik[i]:
+                    if j == pozycja:
+                        caly_slownik[i].pop(j, None)
+                        with open('json_test.json', 'w') as outfile:
+                            json.dump(caly_slownik, outfile)
+                        return
+                    
+                    
+                

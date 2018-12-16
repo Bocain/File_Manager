@@ -61,8 +61,8 @@ class LeftColumnWithCatalogs(object):
             
     def pozycjaKatalogu(self, selection):        
         (model, iter) = selection.get_selected()
-        DeletePosition.DeletePosition.pozycja = str(model[iter][0])
         LeftColumnWithCatalogs.katalogZmiana = str(model[iter][0])
+        DeletePosition.DeletePosition.pozycja = str(model[iter][0])
         
         if iter is not None:
             text = model[iter][0]
