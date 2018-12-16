@@ -1,8 +1,6 @@
 >dodaj katalog, zmien nazwe zakladki, usun pozycje
 
 >Stwórz okno do notatek w miejscu okna z katalogami
-
->£adny wydruk z json. next_step: eksport do txt z otwarciem
 =======================================================================================
 pygtk2tut.pdf -117s./156/???
 gtk.textview
