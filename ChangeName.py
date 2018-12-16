@@ -3,35 +3,59 @@
 
 import pygtk
 import gtk
-import LinkFileWindow
+import json
+import LeftColumnWithCatalogs
 
-class ChosenFile(gtk.Window):
-    def __init__(self, wybor_pliku):
-        super(ChosenFile, self).__init__()
+class ChangeName(gtk.Window):
+    def __init__(self):
+        super(ChangeName, self).__init__()
+
+        self.catalogComboBox = ''
 
         self.connect("destroy", gtk.main_quit)
         
         self.set_default_size(400, 50)
         self.set_position(gtk.WIN_POS_CENTER)
-        self.set_title("Czy potwierdzasz wybor pliku ?")
+        self.set_title("Wybierz katalog i wpisz jego nowa nazwe.")
 
-        btn_yes = gtk.Button('Tak')
-        btn_yes.connect('clicked', self.button_yes, wybor_pliku)
+        self.entry = gtk.Entry()
+        self.entry.set_text("litery,cyfry,spacje,stopki")
 
-        plik = gtk.Label(wybor_pliku)
+        btn_yes = gtk.Button('Potwierdz')
+        btn_yes.connect('clicked', self.button_yes)
+
+        cb = gtk.combo_box_new_text()
+        cb.connect('changed', self.comboOption)
+        
+        with open('json_test.json') as json_file:
+            caly_slownik = json.load(json_file)
+        klucze = caly_slownik.keys()
+        for tab in klucze:
+            cb.append_text(str(tab))
 
         screen = gtk.Fixed()
 
-        screen.put(plik, 10, 10)       
-        screen.put(btn_yes, 10, 30)
+        screen.put(cb, 10, 10)       
+        screen.put(self.entry, 10, 40)
+        screen.put(btn_yes, 10, 70)
 
         self.add(screen)
         self.show_all()
         gtk.main()
         return
+
+    def comboOption(self, widget):
+        self.catalogComboBox = widget.get_active_text()
         
-    def button_yes(self, widgets, wybor_pliku):
-        LinkFileWindow.LinkFileWindow.wybrany_plik = wybor_pliku
-        LinkFileWindow.odpal()
+    def button_yes(self, widgets):
+        with open('json_test.json') as json_file:
+            data = json.load(json_file)
 
-
+        data[str(self.entry.get_text())] = data[str(self.catalogComboBox)]
+        
+        data.pop(str(self.catalogComboBox), None)
+        
+        with open('json_test.json', 'w') as outfile:
+            json.dump(data, outfile)
+            
+        LeftColumnWithCatalogs.LeftColumnWithCatalogs()
