@@ -1,5 +1,3 @@
-coding: cp1250 -*-
-
 import gtk
 
 class HelpWindow(gtk.Window):

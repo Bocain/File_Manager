@@ -1,4 +1,4 @@
->dodaj katalog, zmien nazwe zakladki, usun pozycje
+>usun pozycje, iek
 
 >Stwórz okno do notatek w miejscu okna z katalogami
 =======================================================================================
