@@ -36,7 +36,7 @@ class StartFile(gtk.Window):
         box_tabs.pack_start(LeftColumnCatalogs.tabs_tree_sw)
         box_tabs.pack_start(LeftColumnFolds.subtabs_tree_sw)
         box_side.pack_start(box_tabs)
-        box_side.pack_start(RightColumn.sw, True, True, 0)
+        box_side.pack_start(RightColumn.okno, True, True, 0)
         box_main.pack_start(box_side)
         box_main.pack_start(BottomBar.BottomBar, False, False, 0)
         

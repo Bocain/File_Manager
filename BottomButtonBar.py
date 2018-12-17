@@ -7,40 +7,32 @@ import gtk
 import json
 import LeftColumnWithCatalogs
 import LeftColumnWithFolds
+import RightColumnWithRemarks
 
 class BottomButtonBar(object):
 
     def __init__(self):
         self.BottomBar = gtk.Fixed()
-
-        buttonErrase = gtk.Button("Usun pozycje")
-        buttonErrase.connect("button_press_event", self.buttonErrase)
-        buttonErrase.set_property("width-request", 90)
-        buttonErrase.set_property("height-request", 30)
-
         
-        buttonName = gtk.Button("Zmien nazwe katalogu")
-        buttonName.connect("button_press_event", self.buttonName)
+        buttonName = gtk.Button("Zapisz notatke")
+        buttonName.connect("button_press_event", self.buttonNotatka)
         buttonName.set_property("width-request", 90)
         buttonName.set_property("height-request", 30)
-
-        self.BottomBar.put(buttonErrase, 1, 1)
         self.BottomBar.put(buttonName, 100, 1)
 
-    def buttonErrase(self,widget,event):
-        print "Przycisk do zagospodarowania now¹ fukcj¹"
-
-    def buttonName(self,widget,event):       
-        with open('json_test.json') as json_file:
-            caly_slownik = json.load(json_file)
-            
-        nowaNazwa = raw_input('Podaj nowa nazwe : ')
+    def buttonNotatka(self,widget,event):
+        a = RightColumnWithRemarks.RightColumnWithRemarks.view.get_buffer()
+        si = a.get_start_iter()
+        ei = a.get_end_iter()
+        text = a.get_text(si, ei)
         
-        asd = caly_slownik
-        asd[nowaNazwa]=asd.pop(LeftColumnWithCatalogs.LeftColumnWithCatalogs.katalogZmiana)
+        with open('json_notatka.json') as json_file:
+            slownik = json.load(json_file)
 
-        with open('json_test.json', 'w') as outfile:
-            json.dump(asd, outfile)
+        slownik["notatka"] = text
+        
+        with open('json_notatka.json', 'w') as outfile:
+            json.dump(slownik, outfile)
         
 
         
