@@ -1,4 +1,4 @@
->import export katalogow, zmieñ nazwe zak³adki
+>import export katalogow
 
 >Stwórz okno do notatek w miejscu okna z katalogami
 =======================================================================================

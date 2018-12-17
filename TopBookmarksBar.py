@@ -40,6 +40,8 @@ class TopBookmarksBar(object):
         ToolsPos_DelePosi.connect('activate', MemberFunctions.ToolsPos_DelePosi)
         ToolsPos_ChangName = gtk.MenuItem('_Zmien nazwe katalogu')
         ToolsPos_ChangName.connect('activate', MemberFunctions.ToolsPos_ChangName)
+        ToolsPos_ChangNameTab = gtk.MenuItem('_Zmien nazwe zakladki')
+        ToolsPos_ChangNameTab.connect('activate', MemberFunctions.ToolsPos_ChangNameTab)
         ToolsPos_Help = gtk.MenuItem('_Pomoc')
         ToolsPos_Help.connect('activate', MemberFunctions.ToolsPos_Help)
         
@@ -48,6 +50,7 @@ class TopBookmarksBar(object):
         ToolsList.append(ToolsPos_AddHttp)
         ToolsList.append(ToolsPos_DelePosi)
         ToolsList.append(ToolsPos_ChangName)
+        ToolsList.append(ToolsPos_ChangNameTab)
         ToolsList.append(ToolsPos_Help)
         
         FileFold.set_submenu(FileList)

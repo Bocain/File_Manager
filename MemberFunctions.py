@@ -12,6 +12,7 @@ import AddKatalog
 import ChangeName
 import HelpWindow
 import DeletePosition
+import ChangeNameTab
 
 def FilePos_Hist(widget):
     print 'Wyswietl historie zakladek'
@@ -38,6 +39,7 @@ def FilePos_Quit( widget):
     os.remove("ChosenFile.pyc")
     os.remove("AddKatalog.pyc")
     os.remove("ChangeName.pyc")
+    os.remove("ChangeNameTab.pyc")
     os.remove("HelpWindow.pyc")
     os.remove("DeletePosition.pyc")
     
@@ -66,6 +68,9 @@ def ToolsPos_DelePosi( widget):
 
 def ToolsPos_ChangName( widget):
     ChangeName.ChangeName()
+
+def ToolsPos_ChangNameTab( widget):
+    ChangeNameTab.ChangeNameTab()
 
 def ToolsPos_Help( widget):
     HelpWindow.HelpWindow()
