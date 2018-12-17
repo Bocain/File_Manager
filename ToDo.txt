@@ -1,5 +1,0 @@
->Stwórz okno do notatek w miejscu okna z katalogami
-=======================================================================================
-pygtk2tut.pdf -117s./156/???
-gtk.textview
-moje dokumenty
