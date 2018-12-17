@@ -14,15 +14,6 @@ import HelpWindow
 import DeletePosition
 import ChangeNameTab
 
-def FilePos_Hist(widget):
-    print 'Wyswietl historie zakladek'
-
-def FilePos_Impo(widget):
-    print 'Importuje zakladki'
-
-def FilePos_Eksp(widget):
-    print 'Eskportuje zakladki'
-
 def FilePos_Quit( widget):
     print 'Zamyka program'
     gtk.main_quit()
