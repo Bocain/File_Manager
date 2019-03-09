@@ -14,25 +14,25 @@ class BottomButtonBar(object):
     def __init__(self):
         self.BottomBar = gtk.Fixed()
         
-        buttonName = gtk.Button("Zapisz notatke")
-        buttonName.connect("button_press_event", self.buttonNotatka)
-        buttonName.set_property("width-request", 90)
-        buttonName.set_property("height-request", 30)
-        self.BottomBar.put(buttonName, 100, 1)
+        buttonSaveRemarks = gtk.Button("Zapisz notatke")
+        buttonSaveRemarks.connect("button_press_event", self.updateRemark)
+        buttonSaveRemarks.set_property("width-request", 90)
+        buttonSaveRemarks.set_property("height-request", 30)
+        self.BottomBar.put(buttonSaveRemarks, 100, 1)
 
-    def buttonNotatka(self,widget,event):
-        a = RightColumnWithRemarks.RightColumnWithRemarks.view.get_buffer()
-        si = a.get_start_iter()
-        ei = a.get_end_iter()
-        text = a.get_text(si, ei)
+    def updateRemark(self,widget,event):
+        remarks = RightColumnWithRemarks.RightColumnWithRemarks.view.get_buffer()
+        firstLetterInRemarks = remarks.get_start_iter()
+        lastLetterInRemarks = remarks.get_end_iter()
+        wholeRemark = remarks.get_text(firstLetterInRemarks, lastLetterInRemarks)
         
         with open('json_notatka.json') as json_file:
-            slownik = json.load(json_file)
+            data = json.load(json_file)
 
-        slownik["notatka"] = text
+        data["notatka"] = wholeRemark
         
         with open('json_notatka.json', 'w') as outfile:
-            json.dump(slownik, outfile)
+            json.dump(data, outfile)
         
 
         
