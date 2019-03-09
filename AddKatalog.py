@@ -6,45 +6,42 @@ import gtk
 import json
 import LeftColumnWithCatalogs
 
-class AddKatalog(gtk.Window):
+class AddCatalog(gtk.Window):
     def __init__(self):
-        super(AddKatalog, self).__init__()
-        
-        self.entry = gtk.Entry()
-
-        self.entry.set_text("litery,cyfry,spacje,stopki")
+        super(AddCatalog, self).__init__()
 
         self.connect("destroy", gtk.main_quit)
         
         self.set_default_size(400, 50)
         self.set_position(gtk.WIN_POS_CENTER)
+        self.set_title("Wprowadz nazwe nowej zakladki.")
 
-        self.set_title("Wprowadz nazwe nowej zakladki ?")
+        self.entryCatalogName = gtk.Entry()
+        self.entryCatalogName.set_text(" litery , cyfry , spacje , stopki ") 
 
-        btn_name = gtk.Button('Potwierdz')
-        btn_name.connect('clicked', self.button_name)
+        buttonCONFIRM = gtk.Button('Potwierdz')
+        buttonCONFIRM.connect('clicked', self.addingCatalog)
 
         screen = gtk.Fixed()
-
-        screen.put(self.entry, 10, 10)       
-        screen.put(btn_name, 10, 30)
+        screen.put(self.entryCatalogName, 10, 10)       
+        screen.put(buttonCONFIRM, 10, 30)
 
         self.add(screen)
         self.show_all()
         gtk.main()
         return
         
-    def button_name(self, widgets):   
+    def addingCatalog(self, widgets):   
         with open('json_test.json') as json_file:
-            data = json.load(json_file)
+            programsContent = json.load(json_file)
             
-        klucze = data.keys()
-        var = str(self.entry.get_text())
+        existingCatalogs = data.keys()
+        newCatalogName = str(self.entry.get_text())
 
-        if var in klucze:
+        if newCatalogName in existingCatalogs:
             print"nazwa juz istnieje"
         else:
-            data[var]={}
+            programsContent[newCatalogName]={}
             with open('json_test.json', 'w') as outfile:
-                json.dump(data, outfile)
+                json.dump(programsContent, outfile)
             LeftColumnWithCatalogs.LeftColumnWithCatalogs()
