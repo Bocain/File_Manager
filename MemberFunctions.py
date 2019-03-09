@@ -36,7 +36,7 @@ def FilePos_Quit( widget):
     
     
 def ToolsPos_AddKata( widget):
-    AddKatalog.AddKatalog()
+    AddCatalog.AddCatalog()
 
 
 def ToolsPos_AddLink( widget):
@@ -58,10 +58,10 @@ def ToolsPos_DelePosi( widget):
     DeletePosition.DeletePosition()
 
 def ToolsPos_ChangName( widget):
-    ChangeName.ChangeName()
+    ChangeCatalogName.ChangeCatalogName()
 
 def ToolsPos_ChangNameTab( widget):
-    ChangeNameTab.ChangeNameTab()
+    ChangeTabName.ChangeTabName()
 
 def ToolsPos_Help( widget):
     HelpWindow.HelpWindow()
