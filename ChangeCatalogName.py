@@ -8,29 +8,29 @@ import LeftColumnWithCatalogs
 
 class ChangeCatalogName(gtk.Window):
     def __init__(self):
-        super(ChangeName, self).__init__()
+        super(ChangeCatalogName, self).__init__()
 
-        self.connect("destroy", gtk.main_quit)
+        self.connect('destroy', gtk.main_quit)
 
         self.set_default_size(400, 50)
         self.set_position(gtk.WIN_POS_CENTER)
-        self.set_title("Wybierz katalog i wpisz jego nowa nazwe.")     
+        self.set_title('Wybierz katalog i wpisz jego nowa nazwe.')     
 
         self.entryCatalogName = gtk.Entry()
-        self.entryCatalogName.set_text(" litery , cyfry , spacje , stopki ")
+        self.entryCatalogName.set_text(' litery , cyfry , spacje , stopki ')
 
-        buttonCONFIRM = gtk.Button('Potwierdz')
-        buttonCONFIRM.connect('clicked', self.button_yes)
+        buttonConfirm = gtk.Button('Potwierdz')
+        buttonConfirm.connect('clicked', self.updateCatalogName)
         
-        self.catalogComboBox = ''
-        self.chooseCatalog = gtk.combo_box_new_text()
-        self.chooseCatalog.connect('changed', self.comboOption)
+        self.chosenCatalog = ''
+        self.catalogsList = gtk.combo_box_new_text()
+        self.catalogsList.connect('changed', self.chooseCatalog)
         chooseCatalogUploadList()
         
         screen = gtk.Fixed()
-        screen.put(chooseCatalog, 10, 10)       
+        screen.put(catalogsList, 10, 10)       
         screen.put(self.entryCatalogName, 10, 40)
-        screen.put(buttonCONFIRM, 10, 70)
+        screen.put(buttonConfirm, 10, 70)
 
         self.add(screen)
         self.show_all()
@@ -42,16 +42,16 @@ class ChangeCatalogName(gtk.Window):
             data = json.load(json_file)
         catalogs = data.keys()
         for catalog in catalogs:
-            self.chooseCatalog.append_text(str(catalog))
+            self.catalogsList.append_text(str(catalog))
         
-    def comboOption(self, widget):
-        self.catalogComboBox = widget.get_active_text()
+    def chooseCatalog(self, widget):
+        self.chosenCatalog = widget.get_active_text()
         
-    def button_yes(self, widgets):
+    def updateCatalogName(self, widgets):
         with open('json_test.json') as json_file:
             data = json.load(json_file)
-        data[ str(self.entryCatalogName.get_text()) ] = data[ str(self.catalogComboBox) ]       
-        data.pop(str(self.catalogComboBox), None)
+        data[ str(self.entryCatalogName.get_text()) ] = data[ str(self.chosenCatalog) ]       
+        data.pop(str(self.chosenCatalog), None)
         with open('json_test.json', 'w') as outfile:
             json.dump(data, outfile)            
         LeftColumnWithCatalogs.LeftColumnWithCatalogs()

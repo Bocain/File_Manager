@@ -5,59 +5,59 @@ import pygtk
 import gtk
 import json
 
-class ChangeNameTab(gtk.Window):
+class ChangeTabName(gtk.Window):
     def __init__(self):
-        super(ChangeNameTab, self).__init__()
+        super(ChangeTabName, self).__init__()
 
         self.catalogComboBox = ''
 
-        self.connect("destroy", gtk.main_quit)
+        self.connect('destroy', gtk.main_quit)
         
         self.set_default_size(400, 50)
         self.set_position(gtk.WIN_POS_CENTER)
-        self.set_title("Wybierz zakladke i wpisz jej nowa nazwe.")
+        self.set_title('Wybierz zakladke i wpisz jej nowa nazwe.')
 
-        self.entry = gtk.Entry()
-        self.entry.set_text("litery,cyfry,spacje,stopki")
+        self.entryTabName = gtk.Entry()
+        self.entryTabName.set_text(' litery , cyfry , spacje , stopki ')
 
-        btn_yes = gtk.Button('Potwierdz')
-        btn_yes.connect('clicked', self.button_yes)
+        buttonConfirm = gtk.Button('Potwierdz')
+        buttonConfirm.connect('clicked', self.updateTabName)
 
-        cb = gtk.combo_box_new_text()
-        cb.connect('changed', self.comboOption)
+        tabList = gtk.combo_box_new_text()
+        tabList.connect('changed', self.chooseTab)
         
         with open('json_test.json') as json_file:
-            caly_slownik = json.load(json_file)
-        klucze_katalogi = caly_slownik.keys()
-        for i in klucze_katalogi:
-                for j in caly_slownik[i]:
-                    cb.append_text(str(j))
+            data = json.load(json_file)
+        tabs = data.keys()
+        for i in tabs:
+                for j in tabs[i]:
+                    tabList.append_text(str(j))
 
         screen = gtk.Fixed()
 
-        screen.put(cb, 10, 10)       
-        screen.put(self.entry, 10, 40)
-        screen.put(btn_yes, 10, 70)
+        screen.put(tabList, 10, 10)       
+        screen.put(self.entryTabName, 10, 40)
+        screen.put(buttonConfirm, 10, 70)
 
         self.add(screen)
         self.show_all()
         gtk.main()
         return
 
-    def comboOption(self, widget):
-        self.catalogComboBox = widget.get_active_text()
+    def chooseTab(self, widget):
+        self.chosenTab = widget.get_active_text()
         
-    def button_yes(self, widgets):
+    def updateTabName(self, widgets):
         with open('json_test.json') as json_file:
-            caly_slownik = json.load(json_file)
-        klucze_katalogi = caly_slownik.keys()
-        for i in klucze_katalogi:
-                for j in caly_slownik[i]:
-                    if j == self.catalogComboBox:
-                        wartosc = caly_slownik[i][j]
-                        caly_slownik[i][str(self.entry.get_text())] = wartosc
-                        caly_slownik[i].pop(j, None)
+            data = json.load(json_file)
+        catalogs = data.keys()
+        for i in catalogs:
+                for tab in data[i]:
+                    if tab == self.chosenTab:
+                        wartosc = data[i][tab]
+                        data[i][str(self.entryTabName.get_text())] = wartosc
+                        data[i].pop(tab, None)
                         with open('json_test.json', 'w') as outfile:
-                            json.dump(caly_slownik, outfile)
+                            json.dump(data, outfile)
                         return
                     
