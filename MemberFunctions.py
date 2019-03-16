@@ -11,7 +11,7 @@ import LinkFileWindow
 import AddKatalog
 import ChangeName
 import HelpWindow
-import DeletePosition
+import DeleteCatalog
 import ChangeNameTab
 
 def FilePos_Quit( widget):
@@ -55,7 +55,7 @@ def ToolsPos_AddHttp( widget):
     HttpWindow.odpal()
     
 def ToolsPos_DelePosi( widget):
-    DeletePosition.DeletePosition()
+    DeleteCatalog.DeleteCatalog()
 
 def ToolsPos_ChangName( widget):
     ChangeCatalogName.ChangeCatalogName()
