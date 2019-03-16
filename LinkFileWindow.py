@@ -9,7 +9,7 @@ import FilesWindow
 
 class LinkFileWindow(gtk.Window):
 
-    wybrany_plik = 'Miejsce na sciezke pliku'
+    chosenFilePath = 'Miejsce na sciezke pliku'
     wybrany_katalog = ''
     
     def __init__(self):
@@ -38,7 +38,7 @@ class LinkFileWindow(gtk.Window):
         
         lb_2 = gtk.Label('Wklej lub wpisz sciezke pliku :')
         self.entry_2 = gtk.Entry()
-        self.entry_2.set_text(LinkFileWindow.wybrany_plik)
+        self.entry_2.set_text(LinkFileWindow.chosenFilePath)
 
         btn_file = gtk.Button('Znajdz plik')
         btn_file.connect('clicked', self.button_find_file)
@@ -79,10 +79,10 @@ class LinkFileWindow(gtk.Window):
             json.dump(caly_slownik, outfile)
 
     def button_find_file(self, widgets):
-        FilesWindow.odpal()
+        FilesWindow.launch()
         print('Otwiera okno z plikami')
 
 
-def odpal():
+def launch():
     LinkFileWindow()
     gtk.main()

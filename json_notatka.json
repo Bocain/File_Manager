@@ -1,1 +1,1 @@
-{"notatka": "tylko polskie znaki, pierwsza zapisana notatka. wszystkie odwolania przez member functions, zmieñ nazwe na member function manager. addcatalog i changecatalogname maja dziedziczyc z jednej klasy, czyli ten sam wymiar, itp. bo maja podobny kod" }
+{"notatka": "tylko polskie znaki, pierwsza zapisana notatka. wszystkie odwolania przez member functions, zmieñ nazwe na member function manager. komentarze do wywo³añ w member manager. popraw opis b³edów programu." }

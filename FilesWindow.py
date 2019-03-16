@@ -154,6 +154,6 @@ class FilesWindow(gtk.Window):
         cell.set_property('text', time.ctime(filestat.st_mtime))
 
 
-def odpal():
+def launch():
     FilesWindow()
     gtk.main()
