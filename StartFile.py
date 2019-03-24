@@ -4,21 +4,15 @@
 import os, stat, time
 import pygtk
 import gtk
-import graphics
-import gc
 import TopBookmarksBar
 import BottomButtonBar
 import RightColumnWithRemarks
 import LeftColumnWithCatalogs
 import LeftColumnWithFolds
 
-FolderIcon, FileIcon = graphics.FolderIcon, graphics.FileIcon
-
 class StartFile(gtk.Window):
     def __init__(self):
-
         super(StartFile, self).__init__()
-
         self.set_default_size(800, 640)
         self.set_position(gtk.WIN_POS_CENTER)
 

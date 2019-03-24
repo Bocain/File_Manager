@@ -23,7 +23,7 @@ class LeftColumnWithCatalogs(object):
         catalogsAsKeys = data.keys()
         for cak in catalogsAsKeys:
             LeftColumnWithCatalogs.allCatalogs.append([str(cak)])
-        
+
         self.catalogsWindow = gtk.TreeView()     
         self.catalogsWindow.set_model(LeftColumnWithCatalogs.allCatalogs)
         self.catalogsColumn = gtk.TreeViewColumn("K a t a l o g i", gtk.CellRendererText(), text=0)

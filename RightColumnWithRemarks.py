@@ -9,27 +9,17 @@ import json
 class RightColumnWithRemarks(object):
     
     view = gtk.TextView()
-    
     text = ''
     
     def __init__(self):
 
-##        view = gtk.TextView()
-
-        self.okno = gtk.ScrolledWindow()
-
+        self.notesWindow = gtk.ScrolledWindow()
         with open('Notes.json') as json_file:
             slownik = json.load(json_file)
-
-        buffer0 = RightColumnWithRemarks.view.get_buffer()
-        
-        buffer0.set_text(slownik["notatka"])
-
-        startiter = buffer0.get_start_iter()
-        enditer = buffer0.get_end_iter()
-##        self.buffer0.delete(startiter, enditer)
-        RightColumnWithRemarks.text = buffer0.get_text(startiter, enditer)
-
-        self.okno.add(RightColumnWithRemarks.view)
-
+        bufferNotes = RightColumnWithRemarks.view.get_buffer()
+        bufferNotes.set_text(slownik["notatka"])
+        startIter = bufferNotes.get_start_iter()
+        endIter = bufferNotes.get_end_iter()
+        RightColumnWithRemarks.text = bufferNotes.get_text(startIter, endIter)
+        self.notesWindow.add(RightColumnWithRemarks.view)
         return

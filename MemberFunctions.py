@@ -8,11 +8,11 @@ import subprocess
 import LeftColumnWithCatalogs  
 import HttpWindow
 import LinkFileWindow
-import AddKatalog
-import ChangeName
+import AddCatalog
+import ChangeCatalogName
 import HelpWindow
 import DeleteCatalog
-import ChangeNameTab
+import ChangeTabName
 
 def FilePos_Quit( widget):
     print 'Zamyka program'
@@ -20,7 +20,7 @@ def FilePos_Quit( widget):
     os.remove("BottomButtonBar.pyc")
     os.remove("TopBookmarksBar.pyc")
     os.remove("MemberFunctions.pyc")
-    os.remove("graphics.pyc")
+    os.remove("Graphics.pyc")
     os.remove("LeftColumnWithCatalogs.pyc")
     os.remove("LeftColumnWithFolds.pyc")
     os.remove("HttpWindow.pyc")
@@ -28,21 +28,21 @@ def FilePos_Quit( widget):
     os.remove("RightColumnWithRemarks.pyc")
     os.remove("FilesWindow.pyc")
     os.remove("ChosenFile.pyc")
-    os.remove("AddKatalog.pyc")
-    os.remove("ChangeName.pyc")
-    os.remove("ChangeNameTab.pyc")
+    os.remove("AddCatalog.pyc")
+    os.remove("ChangeCatalogName.pyc")
+    os.remove("ChangeTabName.pyc")
     os.remove("HelpWindow.pyc")
-    os.remove("DeletePosition.pyc")
+    os.remove("DeleteCatalog.pyc")
     
     
 def ToolsPos_AddKata( widget):
     AddCatalog.AddCatalog()
 
 def ToolsPos_AddLink( widget):
-    LinkFileWindow.odpal()
+    LinkFileWindow.launch()
 
 def ToolsPos_AddHttp( widget):
-    HttpWindow.odpal()
+    HttpWindow.launch()
     
 def ToolsPos_DelePosi( widget):
     DeleteCatalog.DeleteCatalog()
