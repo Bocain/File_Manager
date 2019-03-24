@@ -18,7 +18,7 @@ class RightColumnWithRemarks(object):
 
         self.okno = gtk.ScrolledWindow()
 
-        with open('json_notatka.json') as json_file:
+        with open('Notes.json') as json_file:
             slownik = json.load(json_file)
 
         buffer0 = RightColumnWithRemarks.view.get_buffer()

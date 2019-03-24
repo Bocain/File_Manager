@@ -35,13 +35,13 @@ class DeleteCatalog(gtk.Window):
         
     def deleteConfirmation(self, widgets, catalog):
         catalog = catalog
-        with open('json_test.json') as json_file:
+        with open('Database.json') as json_file:
             data = json.load(json_file)
 
         catalogsAsKeys = data.keys()
         if catalog in catalogsAsKeys:
             data.pop(str(catalog), None)
-            with open('json_test.json', 'w') as outfile:
+            with open('Database.json', 'w') as outfile:
                 json.dump(data, outfile)
             LeftColumnWithCatalogs.LeftColumnWithCatalogs()
         else:
@@ -49,6 +49,6 @@ class DeleteCatalog(gtk.Window):
                 for j in data[i]:
                     if j == catalog:
                         data[i].pop(j, None)
-                        with open('json_test.json', 'w') as outfile:
+                        with open('Database.json', 'w') as outfile:
                             json.dump(data, outfile)
                         return

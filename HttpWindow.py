@@ -19,7 +19,7 @@ class HttpWindow(gtk.Window):
         catalogList = gtk.combo_box_new_text()
         catalogList.connect('changed', self.comboOption)
         
-        with open('json_test.json') as json_file:
+        with open('Database.json') as json_file:
             data = json.load(json_file)
         catalogsAsKeys = data.keys()
         for catalogAsKey in catalogsAsKeys:
@@ -56,10 +56,10 @@ class HttpWindow(gtk.Window):
         self.chosenCatalogComboBox = widget.get_active_text()
 
     def AddingConfirmation(self, widgets):
-        with open('json_test.json') as json_file:
+        with open('Database.json') as json_file:
             data = json.load(json_file)           
         data[str(self.chosenCatalogComboBox)][str(self.entryNewTab.get_text())] = str(self.NewLink.get_text())
-        with open('json_test.json', 'w') as outfile:
+        with open('Database.json', 'w') as outfile:
             json.dump(data, outfile)
 
 def launch():

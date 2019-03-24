@@ -27,7 +27,7 @@ class LinkFileWindow(gtk.Window):
         cb = gtk.combo_box_new_text()
         cb.connect('changed', self.comboOption)
 
-        with open('json_test.json') as json_file:
+        with open('Database.json') as json_file:
             caly_slownik = json.load(json_file)
         klucze = caly_slownik.keys()
         for tab in klucze:
@@ -70,12 +70,12 @@ class LinkFileWindow(gtk.Window):
         
 
     def button_add(self, widgets):
-        with open('json_test.json') as json_file:
+        with open('Database.json') as json_file:
             caly_slownik = json.load(json_file)
             
         caly_slownik[str(self.catalogComboBox)][str(self.entry_1.get_text())] = str(self.entry_2.get_text()) 
 
-        with open('json_test.json', 'w') as outfile:
+        with open('Database.json', 'w') as outfile:
             json.dump(caly_slownik, outfile)
 
     def button_find_file(self, widgets):

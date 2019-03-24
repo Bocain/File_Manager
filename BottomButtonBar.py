@@ -26,12 +26,12 @@ class BottomButtonBar(object):
         lastLetterInRemarks = remarks.get_end_iter()
         wholeRemark = remarks.get_text(firstLetterInRemarks, lastLetterInRemarks)
         
-        with open('json_notatka.json') as json_file:
+        with open('Notes.json') as json_file:
             data = json.load(json_file)
 
         data["notatka"] = wholeRemark
         
-        with open('json_notatka.json', 'w') as outfile:
+        with open('Notes.json', 'w') as outfile:
             json.dump(data, outfile)
         
 

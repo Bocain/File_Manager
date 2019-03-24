@@ -4,10 +4,10 @@
 import os, stat, time
 import pygtk
 import gtk
-import graphics
+import Graphics
 import ChosenFile
 
-FolderIcon, FileIcon = graphics.FolderIcon, graphics.FileIcon
+FolderIcon, FileIcon = Graphics.FolderIcon, Graphics.FileIcon
 
 class FilesWindow(gtk.Window):
 

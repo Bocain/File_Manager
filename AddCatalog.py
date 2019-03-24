@@ -32,7 +32,7 @@ class AddCatalog(gtk.Window):
         return
         
     def addingCatalog(self, widgets):   
-        with open('json_test.json') as json_file:
+        with open('Database.json') as json_file:
             programsContent = json.load(json_file)
             
         existingCatalogs = data.keys()
@@ -42,6 +42,6 @@ class AddCatalog(gtk.Window):
             print 'nazwa juz istnieje'
         else:
             programsContent[newCatalogName]={}
-            with open('json_test.json', 'w') as outfile:
+            with open('Database.json', 'w') as outfile:
                 json.dump(programsContent, outfile)
             LeftColumnWithCatalogs.LeftColumnWithCatalogs()

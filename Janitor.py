@@ -3,6 +3,6 @@
 
 import os
 
-for f in os.listdir(os.getcwd()):
-    if f.endswith(".pyc"):
-        os.remove(f)
+for files in os.listdir(os.getcwd()):
+    if files.endswith(".pyc"):
+        os.remove(files)

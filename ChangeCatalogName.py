@@ -38,7 +38,7 @@ class ChangeCatalogName(gtk.Window):
         return
 
     def chooseCatalogUploadList(self):
-        with open('json_test.json') as json_file:
+        with open('Database.json') as json_file:
             data = json.load(json_file)
         catalogs = data.keys()
         for catalog in catalogs:
@@ -48,10 +48,10 @@ class ChangeCatalogName(gtk.Window):
         self.chosenCatalog = widget.get_active_text()
         
     def updateCatalogName(self, widgets):
-        with open('json_test.json') as json_file:
+        with open('Database.json') as json_file:
             data = json.load(json_file)
         data[ str(self.entryCatalogName.get_text()) ] = data[ str(self.chosenCatalog) ]       
         data.pop(str(self.chosenCatalog), None)
-        with open('json_test.json', 'w') as outfile:
+        with open('Database.json', 'w') as outfile:
             json.dump(data, outfile)            
         LeftColumnWithCatalogs.LeftColumnWithCatalogs()

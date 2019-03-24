@@ -26,7 +26,7 @@ class ChangeTabName(gtk.Window):
         tabList = gtk.combo_box_new_text()
         tabList.connect('changed', self.chooseTab)
         
-        with open('json_test.json') as json_file:
+        with open('Database.json') as json_file:
             data = json.load(json_file)
         tabs = data.keys()
         for i in tabs:
@@ -48,7 +48,7 @@ class ChangeTabName(gtk.Window):
         self.chosenTab = widget.get_active_text()
         
     def updateTabName(self, widgets):
-        with open('json_test.json') as json_file:
+        with open('Database.json') as json_file:
             data = json.load(json_file)
         catalogs = data.keys()
         for i in catalogs:
@@ -57,7 +57,7 @@ class ChangeTabName(gtk.Window):
                         wartosc = data[i][tab]
                         data[i][str(self.entryTabName.get_text())] = wartosc
                         data[i].pop(tab, None)
-                        with open('json_test.json', 'w') as outfile:
+                        with open('Database.json', 'w') as outfile:
                             json.dump(data, outfile)
                         return
                     

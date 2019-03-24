@@ -27,7 +27,7 @@ class OpenJason(gtk.Window):
         self.set_default_size(300, 300)
         self.set_position(gtk.WIN_POS_CENTER)
         
-        with open('json_test.json') as slownik:
+        with open('Database.json') as slownik:
             katalogi_zakladki = json.load(slownik)
         text = json.dumps(katalogi_zakladki, indent=4, sort_keys=True)
 

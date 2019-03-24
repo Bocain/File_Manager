@@ -4,70 +4,48 @@
 import os, stat, time
 import pygtk
 import gtk
-import graphics
 import json
-import BottomButtonBar
-import DeletePosition
-
-FolderIcon, FileIcon = graphics.FolderIcon, graphics.FileIcon
+import DeleteCatalog
 
 class LeftColumnWithCatalogs(object):
 
-    var_lista = gtk.ListStore(str)
-    katalogBaza = ''
-    katalogZmiana = ''
-    katalogi_test_global = gtk.ListStore(str)
+    catalogsList = gtk.ListStore(str)
+    primaryCatalog = ''
+    surrogateCatalog = ''
+    allCatalogs = gtk.ListStore(str)
     
-    def __init__(self, dname = None, path_to_file = None):
-        LeftColumnWithCatalogs.katalogi_test_global.clear()
-        
+    def __init__(self):
+
         """tworzenie listy katalogów"""
-        with open('json_test.json') as json_file:
-            caly_slownik = json.load(json_file)
-        klucze = caly_slownik.keys()
-        for tab in klucze:
-            LeftColumnWithCatalogs.katalogi_test_global.append([str(tab)])
+        LeftColumnWithCatalogs.allCatalogs.clear()     
+        with open('Database.json') as json_file:
+            data = json.load(json_file)
+        catalogsAsKeys = data.keys()
+        for cak in catalogsAsKeys:
+            LeftColumnWithCatalogs.allCatalogs.append([str(cak)])
         
-        self.tabs_tree = gtk.TreeView()        
-        self.tabs_tree.set_model(LeftColumnWithCatalogs.katalogi_test_global)
-            
-        self.tabs_column = gtk.TreeViewColumn("K a t a l o g i", gtk.CellRendererText(), text=0)
-        self.tabs_tree.append_column(self.tabs_column)
+        self.catalogsWindow = gtk.TreeView()     
+        self.catalogsWindow.set_model(LeftColumnWithCatalogs.allCatalogs)
+        self.catalogsColumn = gtk.TreeViewColumn("K a t a l o g i", gtk.CellRendererText(), text=0)
+        self.catalogsWindow.append_column(self.catalogsColumn)
+        self.catalogsWindow.connect("row-activated", self.windowRefresh)
+        self.selection = self.catalogsWindow.get_selection()
+        self.selection.connect("changed", self.changeTabsWindowAsCatalogChange)
+        self.catalogsWindow_sw = gtk.ScrolledWindow()
+        self.catalogsWindow_sw.add(self.catalogsWindow)
 
-        """funkcyjnoœæ okienka po podwójnym klikniêciu"""
-        self.tabs_tree.connect("row-activated", self.tab_activated)
-
-        """wybrany wiersz emituje sygnal"""
-        self.selection = self.tabs_tree.get_selection()
-        self.selection.connect("changed", self.pozycjaKatalogu)
-                               
-        """umieszczenie okna katalogów w przewijanym okienku"""
-        self.tabs_tree_sw = gtk.ScrolledWindow()
-        self.tabs_tree_sw.add(self.tabs_tree)
-
-        
-       
-    def tab_activated(self, widget, row, col):
-
-        LeftColumnWithCatalogs.var_lista.clear()
+    def windowRefresh(self, widget, row, col):
+        LeftColumnWithCatalogs.catalogsList.clear()
         model = widget.get_model()
         text = model[row][0]
-        LeftColumnWithCatalogs.katalogBaza = text
-        with open('json_test.json') as json_file:
-            caly_slownik = json.load(json_file)
-        asd = caly_slownik[str(text)].keys()
-        for tab2 in asd:
-            LeftColumnWithCatalogs.var_lista.append([str(tab2)])        
+        LeftColumnWithCatalogs.primaryCatalog = text
+        with open('Database.json') as json_file:
+            data = json.load(json_file)
+        catalogsAsKeys = data[str(text)].keys()
+        for cak in catalogsAsKeys:
+            LeftColumnWithCatalogs.catalogsList.append([str(cak)])        
             
-    def pozycjaKatalogu(self, selection):        
+    def changeTabsWindowAsCatalogChange(self, selection):        
         (model, iter) = selection.get_selected()
-        LeftColumnWithCatalogs.katalogZmiana = str(model[iter][0])
-        DeletePosition.DeletePosition.pozycja = str(model[iter][0])
+        LeftColumnWithCatalogs.surrogateCatalog = str(model[iter][0])
         
-        if iter is not None:
-            text = model[iter][0]
-
-        else:
-            text = "brak iter ???"
-
-        print str(text)
