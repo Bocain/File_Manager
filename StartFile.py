@@ -27,10 +27,10 @@ class StartFile(gtk.Window):
         box_tabs = gtk.VBox()
 
         box_main.pack_start(TopBar.TopBar, False, False, 0)
-        box_tabs.pack_start(LeftColumnCatalogs.tabs_tree_sw)
-        box_tabs.pack_start(LeftColumnFolds.subtabs_tree_sw)
+        box_tabs.pack_start(LeftColumnCatalogs.catalogsWindow_sw)
+        box_tabs.pack_start(LeftColumnFolds.tabsTree_sw)
         box_side.pack_start(box_tabs)
-        box_side.pack_start(RightColumn.okno, True, True, 0)
+        box_side.pack_start(RightColumn.notesWindow, True, True, 0)
         box_main.pack_start(box_side)
         box_main.pack_start(BottomBar.BottomBar, False, False, 0)
         

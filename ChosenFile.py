@@ -6,7 +6,7 @@ import gtk
 import LinkFileWindow
 
 class ChosenFile(gtk.Window):
-    def __init__(self, wybor_pliku):
+    def __init__(self, chosenFilePath):
         super(ChosenFile, self).__init__()
 
         self.connect('destroy', gtk.main_quit)

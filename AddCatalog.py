@@ -35,8 +35,8 @@ class AddCatalog(gtk.Window):
         with open('Database.json') as json_file:
             programsContent = json.load(json_file)
             
-        existingCatalogs = data.keys()
-        newCatalogName = str(self.entry.get_text())
+        existingCatalogs = programsContent.keys()
+        newCatalogName = str(self.entryCatalogName.get_text())
 
         if newCatalogName in existingCatalogs:
             print 'nazwa juz istnieje'

@@ -56,14 +56,14 @@ def ToolsPos_ChangNameTab( widget):
 def ToolsPos_Help( widget):
     HelpWindow.HelpWindow()
 
-def openLink(zakladka):
+def openLink(tab):
     with open('Database.json') as json_file:
         data = json.load(json_file)
-    sciezka = data[str(LeftColumnWithCatalogs.LeftColumnWithCatalogs.katalogBaza)][str(zakladka)]
+    path = data[str(LeftColumnWithCatalogs.LeftColumnWithCatalogs.primaryCatalog)][str(tab)]
     try:
-        os.startfile(str(sciezka))
+        os.startfile(str(path))
     except:
-        subprocess.call([r'C:\Program Files\Mozilla Firefox\Firefox.exe', '-new-tab', str(sciezka)])
+        subprocess.call([r'C:\Program Files\Mozilla Firefox\Firefox.exe', '-new-tab', str(path)])
 
 def drzewko(): 
     """Zwraca listê dysków. Metoda niezaimplementowana."""

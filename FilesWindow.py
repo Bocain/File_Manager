@@ -11,7 +11,7 @@ FolderIcon, FileIcon = Graphics.FolderIcon, Graphics.FileIcon
 
 class FilesWindow(gtk.Window):
 
-    SciezkaPliku = ''
+    chosenFilePath = ''
     
     def __init__(self, dname = None, path_to_file = None):
 
@@ -96,7 +96,7 @@ class FilesWindow(gtk.Window):
         iter = model.get_iter(path)
         filename = os.path.join(self.dirname, model.get_value(iter, 0))
         self.path_to_file = filename
-        FilesWindow.SciezkaPliku = filename
+        FilesWindow.chosenFilePath = filename
         
         self.set_title(filename)
         filestat = os.stat(filename)

@@ -9,7 +9,7 @@ import FilesWindow
 
 class LinkFileWindow(gtk.Window):
 
-    chosenFilePath = 'Miejsce na sciezke pliku'
+    chosenFilePath = ''
     chosenCatalog = ''
     
     def __init__(self):
