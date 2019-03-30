@@ -8,7 +8,7 @@ class HelpWindow(gtk.Window):
         self.set_default_size(50, 50)
         self.set_position(gtk.WIN_POS_CENTER)
 
-        text = "Napisz maila na adres : dajsobiepomoc@youarewelcome.pl"
+        text = "Napisz maila na adres : letmehelpyou@youarewelcome.pl"
 
         label = gtk.Label()
         label.set_text(text)

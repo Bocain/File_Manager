@@ -43,7 +43,7 @@ class HttpWindow(gtk.Window):
         screen.put(self.entryNewTab, 10, 80)
 
         screen.put(labelNewLink, 10, 120)
-        screen.put(self.NewLink, 10, 140)
+        screen.put(self.entryNewLink, 10, 140)
         
         screen.put(buttonConfirmAdd, 10, 170)
 
@@ -58,7 +58,7 @@ class HttpWindow(gtk.Window):
     def AddingConfirmation(self, widgets):
         with open('Database.json') as json_file:
             data = json.load(json_file)           
-        data[str(self.chosenCatalogComboBox)][str(self.entryNewTab.get_text())] = str(self.NewLink.get_text())
+        data[str(self.chosenCatalogComboBox)][str(self.entryNewTab.get_text())] = str(self.entryNewLink.get_text())
         with open('Database.json', 'w') as outfile:
             json.dump(data, outfile)
 

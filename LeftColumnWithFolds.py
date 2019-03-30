@@ -6,6 +6,7 @@ import pygtk
 import gtk
 import LeftColumnWithCatalogs
 import MemberFunctions
+import DeleteCatalog
 
 class LeftColumnWithFolds():
 
@@ -15,6 +16,8 @@ class LeftColumnWithFolds():
         tabsTreeColumn = gtk.TreeViewColumn("Tematyczne linki do wybranej zakladki", gtk.CellRendererText(), text=0)
         self.tabsTree.append_column(tabsTreeColumn)
         self.tabsTree.connect("row-activated", self.OpenTabLink)
+        self.selection = self.tabsTree.get_selection()
+        self.selection.connect("changed", self.changeDeleteCatalogCatalog)
         self.tabsTree_sw = gtk.ScrolledWindow()
         self.tabsTree_sw.add(self.tabsTree)
 
@@ -23,6 +26,6 @@ class LeftColumnWithFolds():
         text = model[row][0]
         MemberFunctions.openLink(str(text))
 
-
-
-
+    def changeDeleteCatalogCatalog(self, selection):        
+        (model, iter) = selection.get_selected()
+        DeleteCatalog.DeleteCatalog.catalog = str(model[iter][0])

@@ -30,8 +30,8 @@ class ChangeTabName(gtk.Window):
             data = json.load(json_file)
         tabs = data.keys()
         for i in tabs:
-                for j in tabs[i]:
-                    tabList.append_text(str(j))
+            for j in data[i]:
+                tabList.append_text(str(j))
 
         screen = gtk.Fixed()
 

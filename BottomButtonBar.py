@@ -18,7 +18,7 @@ class BottomButtonBar(object):
         buttonSaveRemarks.connect("button_press_event", self.updateRemark)
         buttonSaveRemarks.set_property("width-request", 90)
         buttonSaveRemarks.set_property("height-request", 30)
-        self.BottomBar.put(buttonSaveRemarks, 100, 1)
+        self.BottomBar.put(buttonSaveRemarks, 710, 1)
 
     def updateRemark(self,widget,event):
         remarks = RightColumnWithRemarks.RightColumnWithRemarks.view.get_buffer()

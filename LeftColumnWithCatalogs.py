@@ -47,5 +47,5 @@ class LeftColumnWithCatalogs(object):
             
     def changeTabsWindowAsCatalogChange(self, selection):        
         (model, iter) = selection.get_selected()
-        LeftColumnWithCatalogs.surrogateCatalog = str(model[iter][0])
+        DeleteCatalog.DeleteCatalog.catalog = str(model[iter][0])
         

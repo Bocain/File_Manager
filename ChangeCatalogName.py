@@ -25,10 +25,10 @@ class ChangeCatalogName(gtk.Window):
         self.chosenCatalog = ''
         self.catalogsList = gtk.combo_box_new_text()
         self.catalogsList.connect('changed', self.chooseCatalog)
-        chooseCatalogUploadList()
+        self.chooseCatalogUploadList()
         
         screen = gtk.Fixed()
-        screen.put(catalogsList, 10, 10)       
+        screen.put(self.catalogsList, 10, 10)       
         screen.put(self.entryCatalogName, 10, 40)
         screen.put(buttonConfirm, 10, 70)
 
